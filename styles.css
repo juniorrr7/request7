@@ -1,0 +1,24 @@
+:root{
+  --bg1:#0f1724;--bg2:#08101b;--accent:#6ee7b7;--muted:#94a3b8;--glass: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{background:linear-gradient(120deg,var(--bg1),var(--bg2));color:#e6eef6;display:flex;align-items:center;justify-content:center}
+.hero{position:relative;width:min(1200px,92vw);height:min(720px,64vh);border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(2,6,23,0.7);}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(1.05);transform:scale(1.02);transition:transform 800ms cubic-bezier(.2,.9,.25,1)}
+.hero:hover .hero-video{transform:scale(1)}
+.overlay{position:relative;z-index:2;padding:40px;display:flex;flex-direction:column;gap:18px;height:100%;justify-content:flex-end;background:linear-gradient(180deg,transparent 40%, rgba(3,7,15,0.5) 70%)}
+.title{margin:0;font-size: clamp(20px, 3.6vw, 48px);letter-spacing:-.02em}
+.subtitle{margin:0;color:var(--muted);font-size:clamp(12px,1.4vw,16px)}
+.controls{display:flex;gap:12px;align-items:center;margin-top:12px}
+.btn{background:var(--glass);border:1px solid rgba(255,255,255,0.06);color:inherit;padding:10px 14px;border-radius:10px;backdrop-filter:blur(6px);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.45)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#34d399);color:#04201a;font-weight:600}
+.btn.like{font-size:18px;padding:8px 10px}
+.like.liked{animation:pop .5s ease; background:linear-gradient(90deg,#ff6b81,#ff8a6b); color:white}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.progress{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#60a5fa)}
+.toast{position:absolute;top:18px;right:18px;z-index:5;background:rgba(2,6,23,0.6);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);color:var(--muted);opacity:0;transform:translateY(-8px);transition:opacity .28s,transform .28s}
+.toast.show{opacity:1;transform:translateY(0)}
+@media (max-width:720px){.hero{height:62vh;border-radius:12px;padding:16px}.overlay{padding:18px}.controls{gap:8px}}
